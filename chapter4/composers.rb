@@ -1,0 +1,5 @@
+composer = 'Mozart'
+puts composer + ' was "da bomb" in his day.'
+puts ''
+composer = 'Beethoven'
+puts 'I prefer ' + composer + ', personally.'
