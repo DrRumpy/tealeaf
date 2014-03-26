@@ -1,17 +1,16 @@
-puts 'Enter a starting year:'
+puts 'Enter a starting start:'
 start = gets.chomp.to_i
-puts 'Enter an ending year:'
+puts 'Enter an ending start:'
 finish = gets.chomp.to_i
 
 puts
-year = start
-while year <= finish
-	if year % 4 == 0
-		if year % 100 == 0 && year % 400 == 0
-		puts year.to_s + ' is a leap year'
-		end
-    elsif year % 4 == 0 && year % 100 != 0
-    	puts year.to_s + ' is a leap year'
+while start <= finish
+	if start % 4 == 0
+		if start % 100 == 0 && start % 400 == 0
+			puts start.to_s + ' is a leap start'
+    	elsif start % 4 == 0 && start % 100 != 0
+    		puts start.to_s + ' is a leap start'
+    	end
     end
-	year = year + 1
+	start = start + 1
 end

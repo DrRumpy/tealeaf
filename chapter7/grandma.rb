@@ -14,8 +14,9 @@ while true
 		break
 	end
 
-	if say == say.upcase
+	if say == say.upcase && say != 'BYE' 
 		puts 'Grandma says, "NO, NOT SINCE ' + (rand(21) + 1930).to_s + '!'
+	elsif say == 'BYE'
 	else
 		puts 'Grandma says, "HUH?!  SPEAK UP, SONNY!"'
 	end
