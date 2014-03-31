@@ -40,7 +40,18 @@ def roman_numeral number
 		end	
 	end
 
-	puts numeral.upcase
+	puts 'Old style: ' + numeral.upcase
+
+	numeral = numeral.sub(/dcccc/, "cm") # modern 900
+	numeral = numeral.sub(/cccc/, "cd")  # modern 400
+	numeral = numeral.sub(/lxxxx/, "xc") # modern 90
+	numeral = numeral.sub(/xxxx/, "xl")  # modern 40
+	numeral = numeral.sub(/viiii/, "ix") # modern 9
+	numeral = numeral.sub(/iiii/, "iv")  # modern 4
+	
+
+	puts 'New style: ' + numeral.upcase
+
 
 end
 
