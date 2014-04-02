@@ -5,26 +5,22 @@ end
 def recursive_sort unsorted_array, sorted_array
 	still_unsorted = []
 	small = unsorted_array.pop
-	clear_small = true
 
 	unsorted_array.each do |word|
-		if small >= word
+		if small > word
 			still_unsorted.push(small)
-			clear_small = false
-			break
+			small = word
+		else
+			still_unsorted.push(word)
 		end
 	end
 
-	if clear_small == true
-		sorted_array.push(small)
+	if unsorted_array.length <=0
+		return sorted_array
 	end
 
-	if sorted_array == 7
-		return
-	end
-
-puts sorted_array
-sort unsorted_array
+	sorted_array.push(small)
+	recursive_sort still_unsorted, sorted_array
 end
 
 
