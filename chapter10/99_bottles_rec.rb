@@ -22,22 +22,6 @@ def bottles_beer number
 							 'fourteen', 	'fifteen', 	'sixteen',
 							 'seventeen', 'eighteen', 'nineteen']
 
-#=begin
-	if number > 1
-		puts number + ' bottles of beer on the wall,'
-		puts number + ' bottles of beer,'
-		puts 'take one down, pass it around,'
-		puts (number - 1) + ' bottles of beer on the wall.'
-		puts
-	else
-		puts number + ' bottle of beer on the wall,'
-		puts number + ' bottle of beer,'
-		puts 'take it down, pass it around,'
-		puts 'zero bottles of beer on the wall.'
-		puts
-	end
-#=end
-
 	# "left" is how much of the number
 	# we still have left to write out.
 	# "write" is the part we are
@@ -106,6 +90,21 @@ def bottles_beer number
 
 	# Now we just return "num_string"...
 	num_string
+
 end
 
-puts bottles_beer 10
+bottles_of_beer = 5
+current_bottles = bottles_of_beer
+while current_bottles > 2
+	puts bottles_beer(current_bottles) + ' bottles of beer on the wall, ' 
+	puts bottles_beer(current_bottles) + ' bottles of beer!'
+	puts 'take one down, pass it around'
+	current_bottles = current_bottles - 1
+	puts bottles_beer(current_bottles) + ' bottles of beer on the wall!'
+	puts ''
+end
+
+puts 'one bottle of beer on the wall, '
+puts 'one bottle of beer!'
+puts 'take one down, pass it around'
+puts 'no bottles of beer on the wall!'
