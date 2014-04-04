@@ -1,10 +1,14 @@
-def english_number number
+def bottles_beer number
 	if number < 0 # No negative numbers.
-		return 'Please enter a number that isn\'t negative.'
+		return 'You cannot have a negative number of beer bottles on the wall.'
 	end
 	if number == 0
 		return 'zero'
 	end
+	if number > 9999
+		return 'There is no way to fit any more bottles of beer on the wall!'
+	end
+
 	# No more special cases! No more returns!
 	num_string = '' # This is the string we will return.
 
@@ -18,6 +22,22 @@ def english_number number
 							 'fourteen', 	'fifteen', 	'sixteen',
 							 'seventeen', 'eighteen', 'nineteen']
 
+#=begin
+	if number > 1
+		puts number + ' bottles of beer on the wall,'
+		puts number + ' bottles of beer,'
+		puts 'take one down, pass it around,'
+		puts (number - 1) + ' bottles of beer on the wall.'
+		puts
+	else
+		puts number + ' bottle of beer on the wall,'
+		puts number + ' bottle of beer,'
+		puts 'take it down, pass it around,'
+		puts 'zero bottles of beer on the wall.'
+		puts
+	end
+#=end
+
 	# "left" is how much of the number
 	# we still have left to write out.
 	# "write" is the part we are
@@ -29,7 +49,7 @@ def english_number number
 
 	if write > 0
 		# Now here's the recursion:
-		thousands = english_number write
+		thousands = bottles_beer write
 		num_string = num_string + thousands + ' thousand'
 		if left > 0
 			# So we don't write 'two thousandfive hundred'...
@@ -42,7 +62,7 @@ def english_number number
 
 	if write > 0
 		# Now here's the recursion:
-		hundreds = english_number write
+		hundreds = bottles_beer write
 		num_string = num_string + hundreds + ' hundred'
 		if left > 0
 			# So we don't write 'two hundredfifty-one'...
@@ -83,9 +103,9 @@ def english_number number
 		# The "-1" is because ones_place[3] is
 		# 'four', not 'three'.
 	end
-	
+
 	# Now we just return "num_string"...
 	num_string
 end
 
-puts english_number 150550
+puts bottles_beer 10

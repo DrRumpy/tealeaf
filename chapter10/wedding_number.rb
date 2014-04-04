@@ -1,4 +1,4 @@
-def english_number number
+def wedding_number number
 	if number < 0 # No negative numbers.
 		return 'Please enter a number that isn\'t negative.'
 	end
@@ -24,26 +24,13 @@ def english_number number
 	# writing out right now.
 	# write and left...get it? :)
 	left = number
-	write = left/1000 				# How many hundreds left?
-	left = left - write*1000 # Subtract off those hundreds.
-
-	if write > 0
-		# Now here's the recursion:
-		thousands = english_number write
-		num_string = num_string + thousands + ' thousand'
-		if left > 0
-			# So we don't write 'two thousandfive hundred'...
-			num_string = num_string + ' '
-		end
-	end
-
-	write = left/100 				# How many hundreds left?
+	write = left/100				# How many hundreds left?
 	left = left - write*100 # Subtract off those hundreds.
 
 	if write > 0
 		# Now here's the recursion:
-		hundreds = english_number write
-		num_string = num_string + hundreds + ' hundred'
+		hundreds = wedding_number write
+		num_string = num_string + hundreds + ' hundred and'
 		if left > 0
 			# So we don't write 'two hundredfifty-one'...
 			num_string = num_string + ' '
@@ -71,7 +58,7 @@ def english_number number
 		end
 		if left > 0
 			# So we don't write 'sixtyfour'...
-			num_string = num_string + '-'
+			num_string = num_string + ' and '
 		end
 	end
 
@@ -88,4 +75,8 @@ def english_number number
 	num_string
 end
 
-puts english_number 150550
+puts wedding_number 1972
+puts wedding_number 2004
+puts wedding_number 2010
+puts wedding_number 2013
+puts wedding_number 1995
