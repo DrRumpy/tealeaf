@@ -1,0 +1,34 @@
+1. [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each {|e| puts e}
+
+2. [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].each {|e| puts e if e > 5}
+
+3. [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].select {|s| puts s if s % 2 == 1}
+AND
+   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].select {|s| puts s if s.odd?}
+
+4. [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].push 11
+AND
+   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].insert(0, 0)
+
+5. [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].pop
+AND
+   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].push 3
+
+6. [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 3].uniq!
+
+7. Arrays are ordered by index starting at 0. Hashes are ordered by key and value pairs. In earlier versions of Ruby (pre 2.x, I believe), hashes did not preserve the order of entery for new k,v pairs, but it does now. Arrays have always behaved this way.
+
+8. h = {:a => 1, :b => 2, :c => 3}
+   h = {a: 1, b: 2, c: 3}
+
+9. puts h[:b]
+
+10. h[:e] = 5
+
+13. h.select! {|k,v| v >= 3.5}
+
+14. Yes, to both questions.
+ a. Hash with arrays as values : h = {a: [1, 2], b: [3, 4]}
+ b. Array of hashes            : a = [{a: 'spam', b: 'eggs'}, {a: 'foo', b: 'bar'}]
+
+15. I guess http://ruby-doc.org/core-2.1.1/ though I am not sure I like it so much as it seemed like the best resource. I often find programming languages docs show example use cases that are not targeted towards novices. So, the examples tend to be more advanced than my knowledge of the language.
