@@ -1,0 +1,17 @@
+get player name and store it
+
+create array to store all card values
+  - array has more helpful methods like pop, shuffle
+	- e.g. [HK, QH, JH]
+
+define method to calculate card values
+  - take card, hand (actual cards held), and value (total numerical value of cards held)
+  - figures out numerical value for card
+  - adds card numerical value to value variable
+  - stores card suite and value in hand array. eg, hand = [4H, TC] (4 hearts & ten clubs)
+  - use string slices to get index 0, compare in IFs to find value, take action
+
+while loop to control rounds of blackjack
+	- finish by asking player if they want to play again
+  - track wins v losses and report standings at end of each hand
+
