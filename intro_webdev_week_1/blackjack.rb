@@ -31,7 +31,7 @@ def card_values(card, hand, value)
   tens = ['K', 'Q', 'J', 'T']
 
   # check to see if ace should equal '1'
-  if card[0] == 'A' && value > 11
+  if card[0] == 'A' && value > 10
     hand << card
     value = value + 1
   elsif card[0] == 'A' && value < 11
@@ -60,90 +60,80 @@ def format_hand hand
   show_hand.rstrip
 end
 
-while true
-  # reset/set dealer and player hands. shuffle the deck
-  dealer = []
-  d_value = 0
-  hand = []
-  value = 0
-  winner = ''
-  shuffled_deck = deck.shuffle
+
+# reset/set dealer and player hands. shuffle the deck
+dealer = []
+d_value = 0
+hand = []
+value = 0
+shuffled_deck = deck.shuffle
   
-  # deal the player two cards to start
-  say "Here's your cards..."
-  value, hand = card_values(shuffled_deck.pop, hand, value)
-  value, hand = card_values(shuffled_deck.pop, hand, value)
-  say "You have " + format_hand(hand) + " and they add up to #{value}"
-  puts ''
+# deal the player two cards to start
+say "Here's your cards..."
+value, hand = card_values(shuffled_deck.pop, hand, value)
+value, hand = card_values(shuffled_deck.pop, hand, value)
+say "You have " + format_hand(hand) + " and they add up to #{value}"
+puts ''
 
-  # deal cards to dealer
-  d_value, dealer = card_values(shuffled_deck.pop, hand, value)
-  d_value, dealer = card_values(shuffled_deck.pop, hand, value)
-  say "Dealer's face up card is #{dealer[1]}"
-  puts ''
+# deal cards to dealer
+d_value, dealer = card_values(shuffled_deck.pop, dealer, d_value)
+d_value, dealer = card_values(shuffled_deck.pop, dealer, d_value)
+say "Dealer's face up card is #{dealer[1]}"
+puts ''
 
-  # player decides to take a card or stand
+# player decides to take a card or stand
+while true
   say "Press '1' if you want a card and '2' if you want to stand"
-  while true
-    action = gets.chomp
-    if action == '1'
-      value, hand = card_values(shuffled_deck.pop, hand, value)
-      say "You got a #{hand[-1]}"
-      say "Your whole hand is " + format_hand(hand) + " and it adds up to #{value}"
-      puts ''
-    elsif action == '2'
-      say "You stand with " + format_hand(hand) + ", which equals #{value}"
-      puts ''
-      break
-    else
-      say "Please enter only a '1' or '2'"
-      puts ''
-    end
-
-    if value == 21
-      say "Blackjack! Congratulations."
-      puts ''
-      break
-    elsif value > 21
-      say "Sorry! you busted for exceeding 21"
-      winner = 'dealer'
-      break
-    end
-  end
-
-  # dealer's turn
-  while true
-    # if player busted no need to for dealer turn
-    if value > 21
-      break
-    elsif winner
-      break
-    end
-
-    say "Dealer's hole card is #{dealer[0]}, and total hand is " + format_hand(dealer)
-    say "This equals #{d_value}"
+  action = gets.chomp
+  if action == '1'
+    value, hand = card_values(shuffled_deck.pop, hand, value)
+    say "You got a #{hand[-1]}"
+    say "Your whole hand is " + format_hand(hand) + " and it adds up to #{value}"
     puts ''
-    if d_value > 16
-      if d_value > value
-        say "The dealer wins! #{d_value} to #{value}"
-        winner = 'dealer'
-        puts ''
-      elsif d_value == value
-        say "It's a push, Dealer hand #{d_value} equals Player hand #{value}"
-        winner = 'push'
-        puts ''
-      elsif value > d_value
-        say "You win! with #{value} over the Dealer's hand of #{d_value}"
-        winner = 'player'
-      end
-    else
-      say "Dealer's hand is less than 17 so the Dealer will draw a card"
-      d_value, dealer = card_values(shuffled_deck.pop, hand, value)
-      say "Dealer draws a #{dealer[-1]}"
-      say "Dealers hand is now " + format_hand(dealer)
-    end
+  elsif action == '2'
+    say "You stand with " + format_hand(hand) + ", which equals #{value}"
+    puts ''
+    break
+  else
+    say "Please enter only a '1' or '2'"
+    puts ''
   end
 
-break
-
+  if value == 21
+    say "Blackjack! Congratulations #{name}"
+    puts ''
+    break
+  elsif value > 21
+    say "You busted, dealer wins!"
+    puts ''
+    break
+  end
 end
+
+# dealer's turn
+say "Dealer's hole card is #{dealer[0]}, and total hand is " + format_hand(dealer)
+say "This equals #{d_value}"
+puts ''
+while true
+  if d_value > 16
+    if d_value > value
+      say "The dealer wins! #{d_value} to #{value}"
+      puts ''
+      break
+    elsif d_value == value
+      say "It's a push, Dealer hand #{d_value} equals Player hand #{value}"
+      puts ''
+      break
+    elsif value > d_value && value < 22
+      say "You win #{name} with #{value} over the Dealer's hand of #{d_value}"
+      break
+    end
+  else
+    say "Dealer's hand is less than 17 so the Dealer will draw a card"
+    d_value, dealer = card_values(shuffled_deck.pop, dealer, d_value)
+    say "Dealer draws a #{dealer[-1]}"
+    say "Dealers hand is now " + format_hand(dealer)
+  end
+end
+
+say "Game over, #{name}. Thanks for playing."
