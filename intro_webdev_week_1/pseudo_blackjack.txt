@@ -11,6 +11,10 @@ define method to calculate card values
   - stores card suite and value in hand array. eg, hand = [4H, TC] (4 hearts & ten clubs)
   - use string slices to get index 0, compare in IFs to find value, take action
 
+
+define method to show cards in hand as string
+	- this seems to be needed for displaying the players (dealers) hand in a nice format
+
 while loop to control rounds of blackjack
 	- finish by asking player if they want to play again
   - track wins v losses and report standings at end of each hand
