@@ -1,5 +1,3 @@
-require 'pry'
-
 # simple method to make puts easier and more noticeable
 def say str
 	puts "=> #{str}"
@@ -8,7 +6,7 @@ end
 # get player name and greet player
 say "What is your name?"
 name = gets.chomp
-say "Let's play some blackjack, #{name}"
+say "Let's play some Blackjack, #{name}"
 puts ''
 
 # create deck of cards
@@ -116,7 +114,11 @@ say "This equals #{d_value}"
 puts ''
 while true
   if d_value > 16
-    if d_value > value
+    if d_value > 21
+      say "The Dealer busts, you win #{name}"
+      puts ''
+      break
+    elsif d_value > value
       say "The dealer wins! #{d_value} to #{value}"
       puts ''
       break
@@ -132,7 +134,7 @@ while true
     say "Dealer's hand is less than 17 so the Dealer will draw a card"
     d_value, dealer = card_values(shuffled_deck.pop, dealer, d_value)
     say "Dealer draws a #{dealer[-1]}"
-    say "Dealers hand is now " + format_hand(dealer)
+    say "Dealers hand is now " + format_hand(dealer) + " and totals #{d_value}"
   end
 end
 
