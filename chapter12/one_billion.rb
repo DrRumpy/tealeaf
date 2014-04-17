@@ -1,0 +1,1 @@
+puts Time.new - Time.local(1974, 7, 8)
