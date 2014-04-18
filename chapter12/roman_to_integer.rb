@@ -12,37 +12,47 @@ roman_numerals = {'m'  => 1000,
                   'iv' =>    4,
                   'i'  =>    1}
 
-def numeral_value num_arr, roman_numerals
-  total = 0
+def numeral_value num_arr, roman_numerals, total
+  # pop off the last array element
+  num_buff = num_arr.pop
 
-  num_arr.each do |num|
-    total += roman_numerals[num] 
+  # if the popped element and the new last element match
+  # a key in roman_numerals, then it's going to be a 4 or
+  # 9 based number value.
+  if num_arr.length == 0 && roman_numerals.include?(num_buff)
+    total += roman_numerals[num_buff]
+    num_buff = ''
+  elsif roman_numerals.include?(num_arr[-1] + num_buff)
+    total += roman_numerals[num_arr[-1] + num_buff]
+    num_arr.pop
+    num_buff = ''
+  elsif roman_numerals.include?(num_buff)
+    total += roman_numerals[num_buff]
+    num_buff = ''
   end
 
-  total
+  if num_arr.length == 0
+    return total
+  end
+
+  numeral_value(num_arr, roman_numerals, total)
 end
 
-def remove_fours_nines num_arr, roman_numerals
-# identify and separate 4's and 9's from roman 
-# numeral entered by user.
-num_str = num_arr.to_s
-  
-
-
+count = 0
 while true
-  count = 0
   puts "Please enter a Roman numeral"
   num_arr = gets.chomp.scan(/\w/)
-  num_arr.each do |char|
-    if roman_numerals.include?(char)
+  num_arr.each do |num|
+    if roman_numerals.include?(num)
       count += 1
     else
+      puts "Please enter a valid Roman numeral"
       break
     end
   end
-  
+
   if count == num_arr.length
-    puts numeral_value num_arr, roman_numerals
+    puts numeral_value(num_arr, roman_numerals, 0)
     break
   end
 end
