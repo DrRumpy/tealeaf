@@ -15,19 +15,6 @@ end
 puts "Please enter a name?"
 name = gets.chomp
 
-months = {'Jan' => 1,
-          'Feb' => 2,
-          'Mar' => 3,
-          'Apr' => 4,
-          'May' => 5,
-          'Jun' => 6,
-          'Jul' => 7,
-          'Aug' => 8,
-          'Sep' => 9,
-          'Oct' => 10,
-          'Nov' => 11,
-          'Dec' => 12}
-
 year_array = birth_dates[name].split
 month  = year_array[0]
 day    = year_array[1].chop
