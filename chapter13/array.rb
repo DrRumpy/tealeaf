@@ -1,7 +1,7 @@
 class Array
 	def shuffle
     unshuffled_array = self.dup
-    recursive_shuffle unshuffled_array, []
+    self.recursive_shuffle unshuffled_array, []
   end
 
   def recursive_shuffle unshuffled_array, shuffled_array
@@ -9,11 +9,7 @@ class Array
     random = unshuffled_array.sample
 
     unshuffled_array.each do |word|
-      if word == random
-        #do nothing
-      else
-        still_unshuffled.push(word)
-      end
+     still_unshuffled.push(word) if word != random
     end
 
     shuffled_array.push(random)
@@ -23,7 +19,7 @@ class Array
     end
 
 
-    recursive_shuffle unshuffled_array, shuffled_array
+    self.recursive_shuffle still_unshuffled, shuffled_array
   end
 end
 
