@@ -1,31 +1,32 @@
 class Array
-	def shuffle some_array
-    self.recursive_shuffle []
+	def shuffle
+    unshuffled_array = self.dup
+    recursive_shuffle unshuffled_array, []
   end
 
-  def recursive_shuffle shuffled_array
+  def recursive_shuffle unshuffled_array, shuffled_array
     still_unshuffled = []
-    rand = self.sample
+    random = unshuffled_array.sample
 
-    self.each do |word|
-      if word == rand
+    unshuffled_array.each do |word|
+      if word == random
         #do nothing
       else
         still_unshuffled.push(word)
       end
     end
 
-    shuffled_array.push(rand)
+    shuffled_array.push(random)
 
-    if self.length <= 0
+    if unshuffled_array.length <= 0
       return shuffled_array
     end
 
 
-    recursive_shuffle still_unshuffled, shuffled_array
+    recursive_shuffle unshuffled_array, shuffled_array
   end
 end
 
 
 foo = ['one', 'two', 'three', 'four', 'five', 'six', 'seven']
-puts foo.shuffle foo
+puts foo.shuffle
