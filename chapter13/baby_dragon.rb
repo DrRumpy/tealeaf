@@ -6,46 +6,46 @@ class Dragon
     @stuff_in_belly     = 10 # Baby is full to start
     @stuff_in_intestine = 0 # Far away from number 2
 
-    puts "#{name} is born."
+    puts "#{@name} is born."
   end
 
   def feed
-    puts "You feed #{name}."
+    puts "You feed #{@name}."
     @stuff_in_belly = 10
     passage_of_time
   end
 
   def walk
-    puts "You walk #{name}"
+    puts "You walk #{@name}"
     @stuff_in_intestine = 0
     passage_of_time
   end
 
   def put_to_bed
-    puts "You put #{name} to bed."
+    puts "You put #{@name} to bed."
     @asleep = true
     3.times do
       if @asleep
         passage_of_time
       end
       if @asleep
-        puts "#{name} snores, filling the room with smoke."
+        puts "#{@name} snores, filling the room with smoke."
       end
     end
     if @asleep
       @asleep = false
-      puts "#{name} wakes up slowly."
+      puts "#{@name} wakes up slowly."
     end
   end
 
   def toss
-    puts "You toss #{name} up into the air."
+    puts "You toss #{@name} up into the air."
     puts 'He giggles, which singes your eyebrows.'
     passage_of_time
   end
 
   def rock
-    puts "You rock #{name} gently."
+    puts "You rock #{@name} gently."
     @asleep = true
     puts 'He briefly dozes off...'
     passage_of_time
@@ -74,11 +74,41 @@ class Dragon
         @asleep = false
         puts 'He wakes up suddenly!'
       end
-      puts "#{name} is starving!  In desperation , he ate YOU!"
+      puts "#{@name} is starving!  In desperation , he ate YOU!"
       exit
     end
 
     if @stuff_in_intestine >= 10
       @stuff_in_intestine = 0
-      puts "Whoops!  #{name} had an accident..."
+      puts "Whoops!  #{@name} had an accident..."
     end
+
+    if hungry?
+      if @asleep
+        @sleep = false
+        puts "He wakes up suddenly!"
+      end
+      puts "#{@name}'s stomach grumbles..."
+    end
+
+    if poopy?
+      if @asleep
+        @asleep = false
+        puts "He wakes up suddenly!"
+      end
+      puts "#{@name} does the potty dance"
+    end
+  end
+
+end
+
+pet = Dragon.new 'Norbert'
+pet.feed
+pet.toss
+pet.walk
+pet.put_to_bed
+pet.rock
+pet.put_to_bed
+pet.put_to_bed
+pet.put_to_bed
+pet.put_to_bed
