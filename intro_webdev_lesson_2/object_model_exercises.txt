@@ -1,0 +1,38 @@
+1) A Ruby class is similar in structure as a method. However, it uses the reserved work "class" instead of "def".
+
+	# example of class creation
+
+	class Person
+
+		def say
+			puts "Hi!"
+		end
+	end
+
+  fred = Person.new
+
+
+2) A module is a package of behaviors/methods that can be imported into a class description. This gives objects instantiated
+from the class access to methods defined in the module.
+
+	# example of module creation
+
+	module gesture
+		def high_five
+			puts "Give's you a high-five!"
+		end
+	end
+
+  class Person
+
+    include gesture
+
+    def say
+      puts "Hi!"
+    end
+
+  end
+
+  fred = Person.new
+  fred.say
+  fred.high_five
