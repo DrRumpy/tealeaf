@@ -1,0 +1,24 @@
+1) 1
+
+2) Arrays are ordered by numerical index starting with '0'. Hashes contain key and value pairs. A hash key can be any object. Prior to a recent release hash order was not maintained based on the order elements were entered into the hash, but it is now.
+
+3) a) [1,2,3,3]
+   b) [1,2,3]
+   c) [1,2,3]
+
+4) Select runs a block on each element and reutrns the element in a new Array if the block evaluates to true. Map returns all elements in a new Array but modified by the code block.
+
+	# select example
+	[1, 2, 3, 4].select {|num| num.even?}
+
+	# map example
+	[1, 2, 3, 4].map {|num| num*num}
+
+5) foo = {}
+   foo["key"] = value
+
+6) "no way"
+
+7) 4
+
+8) x is actully 0 because of variable scoping, but the script will fail to run with a NoMethodError. The x variable inside the do/end was not defined before it was referenced and thus the error.
