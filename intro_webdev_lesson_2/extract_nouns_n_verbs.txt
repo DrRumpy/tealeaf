@@ -1,0 +1,24 @@
+Blackjack is a card game that can be played with one or more decks of standard playing cards and two people. One dealer and one player, specifically. Only a player enjoys the ability to make arbitrary decisions about what to do with his/her hand of cards. The dealer must adhere to a strict set of rules for whether to stand or draw additional cards, depending on the value of the dealers hand. Generally, dealers stand on 17 and take additional cards if the hand totals less than 17. Anything over 21 is considered a bust for both dealer and players.
+
+To begin the game the Dealer shuffles a minimum of one deck of cards thoroughly. Then deals one card to each player face up and one card, the hole card, to the dealer face down. Another round of dealing cards to players (face up) and the dealer (face up)completes initial part of the game. This is the part that is repeated, exactly, for each and every round of Blackjack.
+
+Each player has two cards face up and the dealer has one card face down (hole card) and one cards face up. Players must then decide to take another card or stand with the two card total that they have. Blackjack strategy for players is based on the total of the players two initial cards and the dealer's face up card. It still comes down to standing (taking no more cards) or hitting (taking an additional) cards until the player hand exceeds 21. Closest to 21 without going over is the objective of the game.
+
+Once all players have completed their turns the dealer turns the hole card face up. If the two dealer cards total less than 17 the dealer must take a card. If the cards total 17 or more but less than 21, the dealer stands. If the dealer exceeds 21 and busts all players who did not bust on their turn, win. If a player and dealer hands equal the same value it is a push/tie.
+
+The exception being a true "blackjack", which is two cards (a ten card and an ace) that equal 21. A natural blackjack automatically wins unless tied by a natural blackjack. Aces also have the unique property of having two values: one and eleven. The ace card takes on the value of 1 or 11 depending on the total of the player or dealer hand. It becomes 1 in order to prevent an hand from going over the total of 21.
+
+Objects and behaviors for the Blackjack OO game:
+
+1. Card
+	- suit
+	- value
+
+2. Deck
+	- shuffle
+	- deal a card
+
+3. Person (Player/Dealer) 
+	- hand(value)
+	- hit
+	- stand
