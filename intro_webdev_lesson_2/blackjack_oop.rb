@@ -56,7 +56,7 @@ class Person
       end
     end
 
-    while total > 21 && aces
+    while total > 21 && aces > 0
       total -= 10
       aces -= 1
     end
@@ -80,5 +80,6 @@ deck.shuffle_the_deck!
 player = Person.new
 player.hit(deck)
 player.hit(deck)
-puts player.total
+player.hit(deck)
 puts player.show_hand
+puts player.total
