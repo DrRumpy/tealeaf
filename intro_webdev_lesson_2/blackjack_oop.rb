@@ -9,24 +9,24 @@ class Card
 end
 
 
-class DeckOfCards
-  attr_accessor :deck
+class Deck
+  attr_accessor :cards
 
   def initialize
-    @deck = []
+    @cards = []
     ['S', 'H', 'C', 'D'].each do |suit|
       [2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K', 'A'].each do |value|
-        deck << Card.new(suit, value)
+        cards << Card.new(suit, value)
       end
     end
   end
 
-  def shuffle_the_deck!
-    @deck.shuffle!
+  def shuffle_the_cards!
+    @cards.shuffle!
   end
 
   def deal_a_card!
-    @deck.pop
+    @cards.pop
   end
 end
 
@@ -34,7 +34,7 @@ end
 class Person
   attr_accessor :hand
 
-  def initialize
+  def initialize(hand)
     @hand = []
   end
 
@@ -75,11 +75,47 @@ class Person
 
 end
 
-deck = DeckOfCards.new
-deck.shuffle_the_deck!
-player = Person.new
-player.hit(deck)
-player.hit(deck)
-player.hit(deck)
-puts player.show_hand
-puts player.total
+class Player < Person
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+    super(hand)
+  end
+
+end
+
+class Dealer < Person
+  attr_reader :name
+
+  def initialize
+    super(hand)
+    @name = "Dealer"
+  end
+
+end
+
+def run
+  # who is the player?
+  puts "Are you ready to play Blackjack?"
+  puts "Please type your first name:"
+  name = gets.chomp
+  puts
+  puts "Hi #{name}, let's get started."
+
+  # create Dealer, Player, and cards objects
+  deck = Deck.new
+  deck.shuffle_the_cards!
+  dealer = Dealer.new
+  player = Player.new(name)
+
+  # deal some cards to player and dealer
+  puts "The Dealer shuffles the deck and starts dealing"
+  puts
+  player.hit(deck)
+  puts "#{player.name} receives #{player.hand} cards"
+
+
+end
+
+run
